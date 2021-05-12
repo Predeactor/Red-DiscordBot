@@ -870,7 +870,7 @@ class Downloader(commands.Cog):
                     (
                         _("Successfully installed cogs: ")
                         if len(installed_cogs) > 1
-                        else _("Successfully installed the cog:")
+                        else _("Successfully installed the cog: ")
                     )
                     + humanize_list(cognames)
                     + (
@@ -904,8 +904,8 @@ class Downloader(commands.Cog):
         by Downloader.
 
         Examples:
-            - `[p]cog uninstall 26-Cogs defender`
-            - `[p]cog uninstall Laggrons-Dumb-Cogs say roleinvite`
+            - `[p]cog uninstall defender`
+            - `[p]cog uninstall say roleinvite`
 
         **Arguments**
 
@@ -1423,7 +1423,7 @@ class Downloader(commands.Cog):
                 _("\nCouldn't find these cogs in {repo.name}: ")
                 if len(unavailable_cogs) > 1
                 else _("\nCouldn't find this cog in {repo.name}: ")
-            ) + humanize_list(unavailable_cogs)
+            ).format(repo=repo) + humanize_list(unavailable_cogs)
         if already_installed:
             message += (
                 _("\nThese cogs were already installed: ")
